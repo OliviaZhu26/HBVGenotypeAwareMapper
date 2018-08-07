@@ -3,7 +3,7 @@ use strict;
 ##Author: ZHU O. Yuan
 ##Script name: HBV_genotype_mapper.pl
 ##Hepatitis B mapper mapper launch script called upon by mapHBV.sh (main function is to simplify and modify filenames)
-##Usage: perl genotype_mapper.pl genotype_caller.out
+##Usage: perl genotype_mapper.pl genotype_caller.out REF_PATH
 ##Calls upon: HBV_genotype_mapper.sh
 
 my%reference=("\|ref_HBVA\|"=>"GenotypeA.fasta","\|ref_HBVB_non-ambiguous\|"=>"GenotypeB_non-ambiguous.fasta","\|ref_HBVC\|"=>"GenotypeC.fasta","\|ref_HBVD\|"=>"GenotypeD.fasta","\|ref_HBVE\|"=>"GenotypeE.fasta","\|ref_HBVF\|"=>"GenotypeF.fasta","\|ref_HBVG\|"=>"GenotypeG.fasta","\|ref_HBVH\|"=>"GenotypeH.fasta");
@@ -27,8 +27,8 @@ while (my $line = <TXT>) {
 	if(!defined $submitted{$header}){
 	    if(-e $filebam){}
 	    else{
-		system("HBV_genotype_mapper.sh $reference{$data[1]} $file1 $file2 $header");
-		print "HBV_genotype_mapper.sh $reference{$data[1]} $file1 $file2 $header";
+		system("HBV_genotype_mapper.sh $reference{$data[1]} $file1 $file2 $header $ARGV[1]");
+		print "HBV_genotype_mapper.sh $reference{$data[1]} $file1 $file2 $header $ARGV[1]";
 		$submitted{$header}=1;
 	    }
 	}

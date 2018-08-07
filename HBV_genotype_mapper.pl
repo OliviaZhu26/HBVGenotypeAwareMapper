@@ -1,6 +1,6 @@
 use warnings;
 use strict;
-##Author: ZHU O. Yuan
+##Author: ZHU O. Yuan 2017
 ##Script name: HBV_genotype_mapper.pl
 ##Hepatitis B mapper mapper launch script called upon by mapHBV.sh (main function is to simplify and modify filenames)
 ##Usage: perl genotype_mapper.pl genotype_caller.out REF_PATH

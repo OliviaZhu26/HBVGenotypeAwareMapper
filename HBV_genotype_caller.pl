@@ -1,52 +1,50 @@
 use warnings;
 use strict;
-#perl genotype_caller.pl genotype_identifier.verbose.txt 10000
 
-#open(NOUT, '>>', $ARGV[2]);
-my$file="";my@references=();my@counts=();my$unmapped=0;my$lin=$ARGV[1]/4;
+##Author: ZHU O. Yuan
+##Script name: HBV_genotype_caller.pl
+##Hepatitis B genotype identifier script II called upon by HBVmap.sh
+##Usage: perl genotype_caller.pl genotype_identifier.verbose.txt 25000 > genotype_caller.out
 
-sub sumarray {
+#initiate variables
+my$file=""; #fastq file being reported on
+my@references=(); #array of references tested
+my@counts=(); #array of read counts mapped to each reference
+my$unmapped=0; #no. unmapped reads
+my$lin=$ARGV[1]/4; #total number of reads sampled
+
+sub sumarray { #sums counts in an array of numbers
     my$sum=0;
     my@array=@{$_[0]};
-    for(my$a=0;$a<@array;$a++){$sum=$sum+$array[$a];}#print"$array[$a]\t$sum\n";}
-    #print "$sum\n";
+    for(my$a=0;$a<@array;$a++){$sum=$sum+$array[$a];}
     return $sum;
 }
 
-sub callgenotype {
-    #for(my$b=0;$b<@counts;$b++){print $counts[$b]."\n";}
+sub callgenotype { #prints a single line for each sample with best match genotype info
     my$total= sumarray(\@counts) + $unmapped;
     my$mapped= sumarray(\@counts);
     my$percentmapped=$mapped/$total;
     my$maxGeno=pop(@counts);
     my$percentGeno=$maxGeno/$mapped;
-    #print "$mapped\t$total\n";
-    #if(($percentmapped > 0.5)||($maxGeno > 1000)){
-	print "$file\t$references[-1]\t$maxGeno\t$percentGeno\t$percentmapped\t$lin\n";
-    #}
-    #else{
-    # 	my$stepup=$lin*4*10;
-	#system("bash genotype_identifier_10X.sh $stepup $file");
-	#print "bash genotype_identifier.sh $stepup $file\n";
-    #}
+    print "$file\t$references[-1]\t$maxGeno\t$percentGeno\t$percentmapped\t$lin\n";
 }
-	
 
+#prints out number and % reads mapped to each Genotype (or not)
 print "ID\tGenotype\tSupportReads\t%MappedSupport\t%Mapped\tLinesUsed\n";
 open (SAM, "$ARGV[0]") or die;
 while (my $line = <SAM>) {
     chomp $line;
     my@data=split('\t',$line);
     if (defined $data[1]) {
-	if($data[1] eq "*"){$unmapped=$data[0];}
-	else{push(@counts,$data[0]);push(@references,$data[1]);}
+	if($data[1] eq "*"){$unmapped=$data[0];} #records unmapped reads
+	else{push(@counts,$data[0]);push(@references,$data[1]);} #records mapped reads and Genotype
     }
     else{
-	if(defined $references[1]){
-	    callgenotype();
-	    $file="";@references=();@counts=();$unmapped=0;
+	if(defined $references[1]){ #at the start of summary stats for every new sample
+	    callgenotype(); #call best match genotype for previous sample
+	    $file="";@references=();@counts=();$unmapped=0; #reset all variables
 	}
-	$file=substr($line,2,100);
+	$file=substr($line,2,100); #removes ./ from sample file name
     }
 }close (SAM);
 callgenotype();

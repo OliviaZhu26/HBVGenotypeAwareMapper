@@ -9,10 +9,9 @@ use strict;
 my%reference=("\|ref_HBVA\|"=>"GenotypeA.fasta","\|ref_HBVB_non-ambiguous\|"=>"GenotypeB_non-ambiguous.fasta","\|ref_HBVC\|"=>"GenotypeC.fasta","\|ref_HBVD\|"=>"GenotypeD.fasta","\|ref_HBVE\|"=>"GenotypeE.fasta","\|ref_HBVF\|"=>"GenotypeF.fasta","\|ref_HBVG\|"=>"GenotypeG.fasta","\|ref_HBVH\|"=>"GenotypeH.fasta");
 my%HEAD=("GenotypeA.fasta"=>"A","GenotypeB_non-ambiguous.fasta"=>"B","GenotypeC.fasta"=>"C","GenotypeD.fasta"=>"D","GenotypeE.fasta"=>"E","GenotypeF.fasta"=>"F","GenotypeG.fasta"=>"G","GenotypeH.fasta"=>"H");
 my%submitted=();
-print "OK\n";
 
-open (SAM, "$ARGV[0]") or die;
-while (my $line = <SAM>) {
+open (TXT, "$ARGV[0]") or die;
+while (my $line = <TXT>) {
     chomp $line;
     my@data=split('\t',$line);
     if(($data[0] =~ /.fastq.gz/)&&($data[0] =~ /R1/)){
@@ -34,4 +33,4 @@ while (my $line = <SAM>) {
 	    }
 	}
     }
-}close (SAM);
+}close (TXT);

@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-##Author: ZHU O. Yuan
+##Author: ZHU O. Yuan 2017
 ##Script name: HBV_genotype_caller.pl
 ##Hepatitis B genotype identifier script II called upon by HBVmap.sh
 ##Usage: perl genotype_caller.pl genotype_identifier.verbose.txt 25000 > genotype_caller.out

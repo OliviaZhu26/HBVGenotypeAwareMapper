@@ -1,6 +1,6 @@
 #!/bin/bash
 
-##Author: ZHU O. Yuan
+##Author: ZHU O. Yuan 2017
 ##Script name: HBV_genotype_identifier.sh
 ##Hepatitis B genotype identifier script called upon by HBVmap.sh
 ##Usage: HBV_genotype_identifier.sh $PATH_TO_REFERENCE $NUMBER_LINES

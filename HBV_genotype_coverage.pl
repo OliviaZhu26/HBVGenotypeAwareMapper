@@ -1,6 +1,11 @@
 use warnings;
 use strict;
-#perl Plot_coverage.pl AHB001_B path_to_vcf
+
+##Author: ZHU O. Yuan 2017
+##Script name: HBV_genotype_coverage.pl
+##Coverage plot generating script called upon by HBV_genotype_coverage.sh
+##Usage: perl Plot_coverage.pl AHB001_B path_to_vcf
+##Calls: Rscript HBV_genotype_coverage.R
 
 my$ID=$ARGV[0];#sample ID
 my$MEAN=0; #average coverage
@@ -8,7 +13,6 @@ my$COV=$ARGV[0].".sorted.grouped.realign.coverage"; #coverage file
 my$AVECOV=$ARGV[0].".sorted.grouped.realign.coverage.sample_summary"; #coverage summary file
 my$VCF=$ARGV[1].$ARGV[0].".sorted.grouped.realign.recal.lofreq.vcf"; #vcf file
 my$Rout=$ARGV[0].".sorted.grouped.realign.recal.lofreq.coverage.pdf"; #out pdf
-#open(NOUT, '>>', $ARGV[2]);
 
 open (SAM, "$AVECOV") or die; 
 while (my $line = <SAM>) {

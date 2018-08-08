@@ -37,7 +37,7 @@ HBVmap.sh   match   [PATHtoReferences]   Genotype8.fasta   25000   map
 </ul>
 
 <strong>Requires</strong>
-<p>Reference files provided as Geno8_References</p>
+<p>Reference files provided as HBVmap_References.zip</p>
 
 <strong>License</strong>
 

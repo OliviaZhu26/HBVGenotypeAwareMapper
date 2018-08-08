@@ -2,6 +2,7 @@
 ##Script name: HBV_genotype_coverage.R
 ##Rscript to generate coverage plot and SNP locations
 ##Usage: Rscript HBV_genotype_coverage.R $ID $MEAN $COV $VCF $Rout
+##Example output pdf see HBVmap-example-pdf_AHB772_B...pdf at https://github.com/YuanOZhu/HBVGenotypeAwareMapper
 
 args<-commandArgs(TRUE)
 id<-args[1] #sample name

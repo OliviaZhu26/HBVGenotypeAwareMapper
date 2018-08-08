@@ -14,6 +14,7 @@ my$AVECOV=$ARGV[0].".sorted.grouped.realign.coverage.sample_summary"; #coverage 
 my$VCF=$ARGV[1].$ARGV[0].".sorted.grouped.realign.recal.lofreq.vcf"; #vcf file
 my$Rout=$ARGV[0].".sorted.grouped.realign.recal.lofreq.coverage.pdf"; #out pdf
 
+#calculates average coverage across genome for input into R script
 open (SAM, "$AVECOV") or die; 
 while (my $line = <SAM>) {
     chomp $line;
@@ -21,4 +22,5 @@ while (my $line = <SAM>) {
     if($data[0] eq $ID){$MEAN=$data[2];}
 }close (SAM);
 
+#calls R script to generate coverage plot
 system("Rscript HBV_genotype_coverage.R $ID $MEAN $COV $VCF $Rout");

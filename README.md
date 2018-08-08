@@ -9,7 +9,7 @@ This wrapper script identifies best match genotype for a paired end sequencing H
 
 Place all paired fastq files within the same folder. Script will loop through all samples. 
 Type from within data folder
-HBVmap.sh match [PATH to references] Genotype8.fasta 25000 map
+HBVmap.sh   match   [PATHtoReferences]   Genotype8.fasta   25000   map
 
 <strong>Prerequisites</strong>
 

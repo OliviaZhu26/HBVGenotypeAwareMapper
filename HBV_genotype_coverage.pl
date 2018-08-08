@@ -3,7 +3,7 @@ use strict;
 
 ##Author: ZHU O. Yuan 2017
 ##Script name: HBV_genotype_coverage.pl
-##Coverage plot generating script called upon by HBV_genotype_coverage.sh
+##Coverage plot generating script called upon by HBV_genotype_mapper.sh
 ##Usage: perl Plot_coverage.pl AHB001_B path_to_vcf
 ##Calls: Rscript HBV_genotype_coverage.R
 

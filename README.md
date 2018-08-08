@@ -2,7 +2,7 @@
 
 <strong>HBVGenotypeAwareMapper 1.0</strong>
 
-This wrapper script identifies best match genotype for a paired end sequencing HBV sample using a subsample of reads, maps all reads to best match genotype reference, outputs .bam .coverage .vcf, and generates a log10 coverage plot with SNP frequency.  
+This wrapper script identifies best match genotype for a paired end sequencing HBV sample using a subsample of reads, maps all reads to best match genotype reference, outputs mapped .bam .coverage .vcf, and generates a log10 coverage plot with SNP frequency.  
 
 
 <strong>How to Run</strong>

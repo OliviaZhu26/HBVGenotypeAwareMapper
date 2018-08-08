@@ -11,7 +11,7 @@ Place all paired fastq files within the same folder. Script will loop through al
 Type from within data folder
 
 <pre>
-HBVmap.sh  match [PATHtoReferences] Genotype8.fasta  25000  map
+HBVmap.sh  match  [PATHtoReferences]  Genotype8.fasta  25000  map
 </pre>
 
 <strong>Prerequisites</strong>

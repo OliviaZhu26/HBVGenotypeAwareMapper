@@ -35,7 +35,7 @@ Place all paired fastq files within the same folder. Script will loop through al
 </ul>
 
 <strong>Requires</strong>
-<p>Reference files provided as Geno8_References:</p>
+<p>Reference files provided as Geno8_References</p>
 
 <strong>License</strong>
 
